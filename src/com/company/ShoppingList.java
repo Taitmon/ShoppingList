@@ -40,43 +40,37 @@ public class ShoppingList
 
             switch (itemCommands)
             {
+                case "a":
                 case "Add":
                 case "add":
                     addItems();
                     break;
+                case "p":
                 case "Print":
                 case "print":
-                    for ( int index = 0; index < mylist.size(); index++  )
-                    {
-                        System.out.println(index + ":" + mylist.get(index));
-                    }
+                    printItems();
                     break;
+                case "r":
                 case "Remove":
                 case "remove":
-                    String item = input.next();
-                    mylist.remove(item);
+                    removeItem();
                     break;
+                case "c":
                 case "Clear":
                 case "clear":
                     mylist.clear();
                     break;
                 case "Help":
                 case "help":
-                System.out.println("\"Add\" to add a item to the list.");
-                System.out.println("\"Print\" to print the list.");
-                System.out.println("\"Remove\" to remove a item from the list.");
-                System.out.println("\"Clear\" to clear or delete all items on the list.");
-                System.out.println("\"Exit\" to end the program.");
+                    printHelp();
                 break;
+                case "e":
                 case "Exit":
                 case "exit":
-                    System.out.println("Thank you for using the revolutionary program \"Shoppeing List\" " +
-                            "and thank you for the double rations.");
-                    moreItems = false;
+                    printExit();
                     break;
                 default:
-                System.out.println("Please try entering another command or " +
-                                "enter help for the list of commands.");
+                printDefault();
                 break;
 
             }
@@ -87,6 +81,42 @@ public class ShoppingList
     {
         String item = input.next();
         mylist.add(item);
+    }
+
+    public void printItems()
+    {
+        for ( int index = 0; index < mylist.size(); index++  )
+        {
+            System.out.println(index + ":" + mylist.get(index));
+        }
+    }
+
+    public void removeItem()
+    {
+        String item = input.next();
+        mylist.remove(item);
+    }
+
+    public void printHelp()
+    {
+        System.out.println("\"Add\" to add a item to the list.");
+        System.out.println("\"Print\" to print the list.");
+        System.out.println("\"Remove\" to remove a item from the list.");
+        System.out.println("\"Clear\" to clear or delete all items on the list.");
+        System.out.println("\"Exit\" to end the program.");
+    }
+
+    public void printExit()
+    {
+        System.out.println("Thank you for using the revolutionary program \"Shoppeing List\" " +
+                "and thank you for the double rations.");
+        moreItems = false;
+    }
+
+    public void printDefault()
+    {
+        System.out.println("Please try entering another command or " +
+                "enter help for the list of commands.");
     }
 
 }
